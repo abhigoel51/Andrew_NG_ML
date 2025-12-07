@@ -8,6 +8,7 @@ Code link - https://colab.research.google.com/drive/1jNVg0pSU5nNKY92FXyy9A0-JoBY
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.activations import linear, relu, sigmoid
 ```
 ## Used for normalisation
 ```python
@@ -42,15 +43,39 @@ model.fit(
 ```
 
 ## Commonly used activation functions
-                    z = wx+b
 
-### 1. Sigmoid function                    
+<img width="931" height="319" alt="image" src="https://github.com/user-attachments/assets/ac98ddc7-9170-485b-afe5-5c98e90aabac" />
+
+                    z = wx+b  
+
+
+### 1. Sigmoid function    
+Mostly used for Binary Classification.  
+
                     f(z) = 1/(1+e**(-z))
 
 ### 2. ReLU function
+Used for Regression and Hidden layers
+
                     f(z) = max(0,z)
 
 ### 3. Linear activation function
+Used for Regression
+
                     f(z) = z  ---> Basically no activation function used
 
 ### 4. Softmax function
+It used for classification of more than 2 objects.  
+
+
+$$
+\text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{n} e^{z_j}}
+$$
+
+
+## Why Activation functions are needed ?
+Say we use a very simple neural network, with **Liner activation function**.   
+The output of first layer is passed onto 2nd, which still results in Linear output.  
+So it is better to use **ReLU** for hidden layers (earlier sigmoid was used but ReLU is more fast and efficent).  
+
+<img width="1838" height="663" alt="image" src="https://github.com/user-attachments/assets/c93bc817-3a80-40c0-ac81-9385800a215a" />
