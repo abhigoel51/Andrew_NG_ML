@@ -40,3 +40,17 @@ model.fit(
     epochs=10,
 )
 ```
+
+## Commonly used activation functions
+                    z = wx+b
+
+### 1. Sigmoid function                    
+                    f(z) = 1/(1+e**(-z))
+
+### 2. ReLU function
+                    f(z) = max(0,z)
+
+### 3. Linear activation function
+                    f(z) = z  ---> Basically no activation function used
+
+### 4. Softmax function
