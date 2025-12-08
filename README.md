@@ -9,6 +9,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.activations import linear, relu, sigmoid
+from tensorflow.keras.losses import SparseCategoricalCrossentropy, BinaryCrossentropy
 ```
 ## Used for normalisation
 ```python
@@ -72,10 +73,55 @@ $$
 \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{n} e^{z_j}}
 $$
 
-
 ## Why Activation functions are needed ?
 Say we use a very simple neural network, with **Liner activation function**.   
 The output of first layer is passed onto 2nd, which still results in Linear output.  
 So it is better to use **ReLU** for hidden layers (earlier sigmoid was used but ReLU is more fast and efficent).  
 
 <img width="1838" height="663" alt="image" src="https://github.com/user-attachments/assets/c93bc817-3a80-40c0-ac81-9385800a215a" />
+
+### Two approaches for Multiclassification
+**1. Using Softmax**
+
+We are applying softmax at the output of the final layer, the issue with this is that we are not able to compute the exact loss in next step.  
+As we shold ideally calculate loss by comparing y and y^ , but in this case we are applying softmax to y^, which will not converge faster.
+```python
+model = Sequential(
+    [ 
+        Dense(25, activation = 'relu'),
+        Dense(15, activation = 'relu'),
+        Dense(4, activation = 'softmax')    # < softmax activation here
+    ]
+)
+model.compile(
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(),
+    optimizer=tf.keras.optimizers.Adam(0.001),
+)
+
+model.fit(
+    X_train,y_train,
+    epochs=10
+)
+```
+**2. Using Logits**
+
+In this case we will use the outputs as **Linear** from the final output layer.
+After the model is trained, during prediction we can use softmax to the ouput of this model to convert it into probabilities.
+```python
+preferred_model = Sequential(
+    [ 
+        Dense(25, activation = 'relu'),
+        Dense(15, activation = 'relu'),
+        Dense(4, activation = 'linear')   #<-- Note
+    ]
+)
+preferred_model.compile(
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),  #<-- Note
+    optimizer=tf.keras.optimizers.Adam(0.001),
+)
+
+preferred_model.fit(
+    X_train,y_train,
+    epochs=10
+)
+```
