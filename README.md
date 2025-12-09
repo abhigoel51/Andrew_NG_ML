@@ -125,3 +125,15 @@ preferred_model.fit(
     epochs=10
 )
 ```
+## Convolution Neural Network
+
+Earlier we were using **Dense** layer, where all the inputs were interconnected to **all** the hidden layer units.  
+But in case of **CNN**, we need not interconnect all the input layers to **all** the hidden units.  
+We can decide, which inputs will map to which hidden layer units.
+
+<img width="1840" height="562" alt="image" src="https://github.com/user-attachments/assets/a7670084-2845-416b-af51-fb4ae39fb675" />
+
+### Why is this helpful ?
+
+1. We can get better output even if we have less data.
+2. Chances of overfitting are reduced. 
