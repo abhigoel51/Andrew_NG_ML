@@ -2,7 +2,37 @@
 
 `
 Code link - https://colab.research.google.com/drive/1jNVg0pSU5nNKY92FXyy9A0-JoBYsUaG_#scrollTo=Dc227tYUkHYp
+
 `
+## Most Common libraries used in sklearn
+```python
+# for building linear regression models and preparing data
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+```
+### Spliting the data using sklearn
+```python
+# Get 60% of the dataset as the training set. Put the remaining 40% in temporary variables: x_ and y_.
+x_train, x_, y_train, y_ = train_test_split(x, y, test_size=0.40, random_state=1)
+
+# Split the 40% subset above into two: one half for cross validation and the other for the test set
+x_cv, x_test, y_cv, y_test = train_test_split(x_, y_, test_size=0.50, random_state=1)
+
+# Delete temporary variables
+del x_, y_
+
+```
+### Normalising the training data using StandardScaler
+```python
+# Initialize the class
+scaler_linear = StandardScaler()
+
+# Compute the mean and standard deviation of the training set then transform it
+X_train_scaled = scaler_linear.fit_transform(x_train)
+```
+
 ## Most common libraries used in Tensorflow
 ```python
 import tensorflow as tf
@@ -11,14 +41,14 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.activations import linear, relu, sigmoid
 from tensorflow.keras.losses import SparseCategoricalCrossentropy, BinaryCrossentropy
 ```
-## Used for normalisation
+### Used for normalisation
 ```python
 norm_l = tf.keras.layers.Normalization(axis=-1) # (100,2) -> (axis0,axis1) -> axis = -1 means last axis i.e. axis = 1
 norm_l.adapt(X)  # learns mean, variance
 Xn = norm_l(X)
 ```
 
-## Creating a basic tf Sequential model
+### Creating a basic tf Sequential model
 ```python
 model = Sequential(
     [
