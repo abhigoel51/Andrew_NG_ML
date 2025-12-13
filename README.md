@@ -167,3 +167,15 @@ We can decide, which inputs will map to which hidden layer units.
 
 1. We can get better output even if we have less data.
 2. Chances of overfitting are reduced. 
+
+## Tradeoff between Bias and Variance
+
+A example showing how bias and variance are impacted on the basis of degree of polynmial(no. of features, x)   
+and what is the impact on cost function (J)
+
+<img width="970" height="473" alt="image" src="https://github.com/user-attachments/assets/7788b5d5-e70b-4248-9c24-2e5f7d7e1313" />
+
+The take away from this is that  
+1. Use a larger neural network (with more hidden layers), this will lead to overfitting of training set.
+2. Once we get a J for training set very low, then check the model against cv set.
+3. If gap between cv and train set is high, add regularisation (lambda). 
