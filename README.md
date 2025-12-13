@@ -178,4 +178,19 @@ and what is the impact on cost function (J)
 The take away from this is that  
 1. Use a larger neural network (with more hidden layers), this will lead to overfitting of training set.
 2. Once we get a J for training set very low, then check the model against cv set.
-3. If gap between cv and train set is high, add regularisation (lambda). 
+3. If gap between cv and train set is high, add regularisation (lambda).
+
+## Error Metrics
+
+### Confusion matrix
+
+We can use **Confusion matrix** to determine, the error and correct predictions.
+
+<img width="1697" height="782" alt="image" src="https://github.com/user-attachments/assets/96f81ed3-cd63-4e29-8644-599d95069d6f" />
+
+### F1 score
+We cannot take average of presicion and recall when comparing different models, so F1 score gives better idea.
+
+$$
+F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
