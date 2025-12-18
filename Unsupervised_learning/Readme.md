@@ -22,7 +22,7 @@
 ### Density estimation
 
 We are considering 2 features for m different examples as shown  below.  
-Say we plot a m+1 example with same 2 features, we will calculate the probabilty. If it is less then epsilon,   
+Say we plot a $$(m+1)^{\text{th}}$$ example with same 2 features, we will calculate the probabilty. If it is less then epsilon,   
 then it is a anamoly.
 
 <img width="1592" height="746" alt="image" src="https://github.com/user-attachments/assets/be0b2cc7-6f85-40da-9f69-3131b32eb12c" />
@@ -40,4 +40,16 @@ We need to calculate mean and variance from the feature set of m examples.
 
 <img width="545" height="329" alt="image" src="https://github.com/user-attachments/assets/ec0bde3c-1359-4eee-a056-825415a50315" />
 
+So basically in this example we are choosing n features for m examples of x_i, those can help in detecting anamoly (n features).  
 
+<img width="1333" height="758" alt="image" src="https://github.com/user-attachments/assets/2298421e-5042-479b-8e3c-15fa81f3fc0d" />
+
+**Why this works ?**  
+We are calculating probability for a given example accross n features and multiplying them (to calculate the chances of occurence of that event). Say for any $$(n)^{\text{th}}$$ feature, probability is very low or high then this will point to anomly as output probability will reduce or increase drastically because of multiplication.
+
+A example for 2 features
+
+<img width="1316" height="788" alt="image" src="https://github.com/user-attachments/assets/540fa3e4-16fd-4551-9ad7-f7fd39db2f70" />
+
+We are considering 2 examples $$x^1$$ and $$x^2$$ , with 2 features x_1 and x_2.  
+In case of $$x^2$$ probability is less than epsilon, so it can be a anamoly.
