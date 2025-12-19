@@ -53,3 +53,13 @@ A example for 2 features
 
 We are considering 2 examples $$x^1$$ and $$x^2$$ , with 2 features x_1 and x_2.  
 In case of $$x^2$$ probability is less than epsilon, so it can be a anamoly.
+
+#### How to choose features for anamoly detection ?
+
+1. Choose **Gaussian features** - Say i have feature x_1, which is non-gaussian, if i can make the distribution gaussian by transforming        x_1 by taking log(x_1) or x_1**0.5 etc then this is a better choice.
+2. Introduce new features by combining already existing features.
+
+<font color="Red">Note:  
+1. Anamoly detection is used when most of the data points are working as expected and only few data points are not working as expected.
+2. It is also used when the future input features can change unlike in case of supervised learning. For e.g. if we map proability distribution using 2 features i.e heat and vibration in case of airplane engines, but in future the input features change. But we still expect anamoly detection to work. 
+
