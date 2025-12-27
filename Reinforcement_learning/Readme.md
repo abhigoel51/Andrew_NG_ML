@@ -37,3 +37,15 @@ Another example when Discount factor is 0.3, notice how direction are different 
 <img width="1468" height="750" alt="image" src="https://github.com/user-attachments/assets/acd7afe7-5237-4103-ac3a-23489e0d6acb" />
 
 <img width="588" height="200" alt="image" src="https://github.com/user-attachments/assets/102e52ed-ed0c-4ff6-9b8a-318a9683761e" />
+
+### Stochastic 
+
+When we want to move the robot in a certain direction but chances of robot moving in the same direction may be not be 100%, may be due to external factors or any other reason. For .e.g Robot is trying to move on wet space, which causes it to slip and is not able to move in the intented direction.
+
+So to solve the problem we take the **average of next state in Bellman equation** 
+
+Considering discount factor as 0.3 as above and mistep_pob as 0.2, earlier it was 0.
+
+<img width="1036" height="228" alt="image" src="https://github.com/user-attachments/assets/49f205f5-5755-49a5-a7a3-92e8f2529722" />
+
+Comparing it with previous optimal policy diagram, the reward for moving in a certain direction has decreased.
