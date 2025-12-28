@@ -49,3 +49,30 @@ Considering discount factor as 0.3 as above and mistep_pob as 0.2, earlier it wa
 <img width="1036" height="228" alt="image" src="https://github.com/user-attachments/assets/49f205f5-5755-49a5-a7a3-92e8f2529722" />
 
 Comparing it with previous optimal policy diagram, the reward for moving in a certain direction has decreased.
+
+**Whatever we discused above is applicable for discrete space, but practically we deal in continous space**
+
+# State Value function for Continous space
+
+We are trying to build a neural network for predicting **Q(s,a)**.  
+
+**Why is is NN needed, why cannot we use Bellman equation?**  
+1. We need to find all the Q(s,a) and then choose the optimal policy, which is time consuming.
+2. Once neural network is trained, we can directly find the optimal policy (as weights are trained for optimal policy).
+
+Here we are considering 1 output, but it is better to consider the **same no. of outputs as no. of possible states (4 in this case.)**
+
+<img width="1241" height="486" alt="image" src="https://github.com/user-attachments/assets/8d82a022-5206-43d3-955d-42b478d0da48" />
+
+**Now the question is how can we train NN, as Reinforcement learning is Unsupervised learning and to train NN we use supervised learning.**
+
+We will use Bellman's equation to find lot input and output values, that will be used to train NN.
+
+<img width="411" height="200" alt="image" src="https://github.com/user-attachments/assets/0b371bfd-d81a-468c-8195-6fe50c9fc374" />
+
+## Mini Batch learning
+
+In this case we update the gradient of a Mini batch not over every value of X,y.  
+This is done, when no. of inputs are very high. So to speed up the whole process we need to calculate the gradient decesent after a mini batch say 1000 values of x.  
+
+This will not trace back to the optimal GD path, but will give the desired result within resaonable time.
